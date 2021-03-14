@@ -1,7 +1,9 @@
 ﻿using ContosoUniversity.Models;
+using ContosoUniversity.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Threading.Tasks;
 
 namespace ContosoUniversity.Pages.Students
@@ -17,7 +19,7 @@ namespace ContosoUniversity.Pages.Students
         }
 
         [BindProperty]
-        public Student Student { get; set; }
+        public StudentVM StudentVM { get; set; }
         public string ErrorMessage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
@@ -27,11 +29,11 @@ namespace ContosoUniversity.Pages.Students
                 return NotFound();
             }
 
-            Student = await _context.Students
+            var student = await _context.Students
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Student == null)
+            if (student == null)
             {
                 return NotFound();
             }
@@ -41,6 +43,7 @@ namespace ContosoUniversity.Pages.Students
                 ErrorMessage = "Delete failed. Try again";
             }
 
+            StudentVM = StudentVM.FromStudent(student);
             return Page();
         }
 

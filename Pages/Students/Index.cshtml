@@ -8,7 +8,7 @@
 <h2>Students</h2>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="CreateVM">Create New</a>
 </p>
 
 <form asp-page="./Index" method="get">
@@ -27,7 +27,7 @@
         <tr>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
-                   asp-route-currentFilter="@Model.CurrentFilter">
+                    asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Students[0].LastName)
                 </a>
             </th>
@@ -36,7 +36,7 @@
             </th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
-                   asp-route-currentFilter="@Model.CurrentFilter">
+                    asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Students[0].EnrollmentDate)
                 </a>
             </th>
@@ -71,17 +71,11 @@
     var nextDisabled = !Model.Students.HasNextPage ? "disabled" : "";
 }
 
-<a asp-page="./Index"
-   asp-route-sortOrder="@Model.CurrentSort"
-   asp-route-pageIndex="@(Model.Students.PageIndex - 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @prevDisabled">
+<a asp-page="./Index" asp-route-sortOrder="@Model.CurrentSort" asp-route-pageIndex="@(Model.Students.PageIndex - 1)"
+    asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-primary @prevDisabled">
     Previous
 </a>
-<a asp-page="./Index"
-   asp-route-sortOrder="@Model.CurrentSort"
-   asp-route-pageIndex="@(Model.Students.PageIndex + 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @nextDisabled">
+<a asp-page="./Index" asp-route-sortOrder="@Model.CurrentSort" asp-route-pageIndex="@(Model.Students.PageIndex + 1)"
+    asp-route-currentFilter="@Model.CurrentFilter" class="btn btn-primary @nextDisabled">
     Next
 </a>

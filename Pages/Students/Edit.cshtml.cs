@@ -1,7 +1,9 @@
 ﻿using ContosoUniversity.Data;
 using ContosoUniversity.Models;
+using ContosoUniversity.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using System.Threading.Tasks;
 
 namespace ContosoUniversity.Pages.Students
@@ -13,10 +15,11 @@ namespace ContosoUniversity.Pages.Students
         public EditModel(SchoolContext context)
         {
             _context = context;
+            StudentVM = new StudentVM();
         }
 
         [BindProperty]
-        public Student Student { get; set; }
+        public StudentVM StudentVM { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -25,12 +28,14 @@ namespace ContosoUniversity.Pages.Students
                 return NotFound();
             }
 
-            Student = await _context.Students.FindAsync(id);
+            var student = await _context.Students.FindAsync(id);
 
-            if (Student == null)
+            if (student == null)
             {
                 return NotFound();
             }
+
+            StudentVM = StudentVM.FromStudent(student);
             return Page();
         }
 
@@ -43,16 +48,19 @@ namespace ContosoUniversity.Pages.Students
                 return NotFound();
             }
 
-            if (await TryUpdateModelAsync<Student>(
-                studentToUpdate,
-                "student",
-                s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate))
+
+            try
             {
+                studentToUpdate.UpdateName(StudentVM.LastName, StudentVM.FirstMidName);
+                studentToUpdate.UpdateEnrollmentDate(StudentVM.EnrollmentDate);
+
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
-
-            return Page();
+            catch (Exception)
+            {
+                return Page();
+            }
         }
     }
 }

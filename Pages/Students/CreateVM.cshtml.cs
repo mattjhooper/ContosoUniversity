@@ -21,8 +21,8 @@ namespace ContosoUniversity.Pages.Students
             StudentVM = new StudentVM
             {
                 EnrollmentDate = DateTime.Now,
-                FirstMidName = "Joe VM",
-                LastName = "Smith VM"
+                FirstMidName = "Joe",
+                LastName = "Smith"
             };
             return Page();
         }
@@ -37,8 +37,8 @@ namespace ContosoUniversity.Pages.Students
                 return Page();
             }
 
-            var entry = _context.Add(new Student());
-            entry.CurrentValues.SetValues(StudentVM);
+            var student = new Student(lastName: StudentVM.LastName, firstMidName: StudentVM.FirstMidName, enrollmentDate: StudentVM.EnrollmentDate);
+            var entry = _context.Add(student);
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }

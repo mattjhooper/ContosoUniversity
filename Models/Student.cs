@@ -23,5 +23,17 @@ namespace ContosoUniversity.Models
             FirstMidName = firstMidName;
             EnrollmentDate = enrollmentDate;
         }
+
+        public void UpdateName(string lastName, string firstMidName)
+        {
+            LastName = lastName;
+            FirstMidName = firstMidName;
+        }
+
+        public void UpdateEnrollmentDate(DateTime enrollmentDate)
+        {
+            EnrollmentDate = enrollmentDate;
+        }
+
     }
 }
