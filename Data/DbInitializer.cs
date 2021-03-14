@@ -20,14 +20,14 @@ namespace ContosoUniversity.Data
 
             var students = new Student[]
             {
-                new Student("Carson","Alexander",DateTime.Parse("2019-09-01")),
-                new Student("Meredith","Alonso",DateTime.Parse("2017-09-01")),
-                new Student("Arturo","Anand",DateTime.Parse("2018-09-01")),
-                new Student("Gytis","Barzdukas",DateTime.Parse("2017-09-01")),
-                new Student("Yan","Li",DateTime.Parse("2017-09-01")),
-                new Student("Peggy","Justice",DateTime.Parse("2016-09-01")),
-                new Student("Laura","Norman",DateTime.Parse("2018-09-01")),
-                new Student("Nino","Olivetto",DateTime.Parse("2019-09-01")),
+                new Student(firstMidName:"Carson",lastName:"Alexander",enrollmentDate:DateTime.Parse("2019-09-01")),
+                new Student(firstMidName:"Meredith",lastName:"Alonso",enrollmentDate:DateTime.Parse("2017-09-01")),
+                new Student(firstMidName:"Arturo",lastName:"Anand",enrollmentDate:DateTime.Parse("2018-09-01")),
+                new Student(firstMidName:"Gytis",lastName:"Barzdukas",enrollmentDate:DateTime.Parse("2017-09-01")),
+                new Student(firstMidName:"Yan",lastName:"Li",enrollmentDate:DateTime.Parse("2017-09-01")),
+                new Student(firstMidName:"Peggy",lastName:"Justice",enrollmentDate:DateTime.Parse("2016-09-01")),
+                new Student(firstMidName:"Laura",lastName:"Norman",enrollmentDate:DateTime.Parse("2018-09-01")),
+                new Student(firstMidName:"Nino",lastName:"Olivetto",enrollmentDate:DateTime.Parse("2019-09-01")),
             };
 
             context.Students.AddRange(students);
