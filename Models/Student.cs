@@ -7,9 +7,18 @@ namespace ContosoUniversity.Models
     public class Student
     {
         private List<Enrollment> _enrollments;
+        private string _LastName;
 
         public int ID { get; private set; }
-        public string LastName { get; private set; }
+        public string LastName
+        {
+            get { return _LastName; }
+            private set
+            {
+                _LastName = value ?? throw new ArgumentException("LastName must not be null", nameof(value));
+            }
+        }
+
         public string FirstMidName { get; private set; }
         public DateTime EnrollmentDate { get; private set; }
 
