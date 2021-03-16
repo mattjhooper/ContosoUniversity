@@ -28,7 +28,7 @@ namespace ContosoUniversity.Data
                 new Student{FirstMidName="Peggy",LastName="Justice",EnrollmentDate=DateTime.Parse("2016-09-01")},
                 new Student{FirstMidName="Laura",LastName="Norman",EnrollmentDate=DateTime.Parse("2018-09-01")},
                 new Student{FirstMidName="Nino",LastName="Olivetto",EnrollmentDate=DateTime.Parse("2019-09-01")},
-                new Student{FirstMidName="Matt",EnrollmentDate=DateTime.Parse("2021-03-01")}
+                //new Student{FirstMidName="Matt",EnrollmentDate=DateTime.Parse("2021-03-01")}
             };
 
             context.Students.AddRange(students);
