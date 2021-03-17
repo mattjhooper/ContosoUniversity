@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using ContosoUniversity.Models;
 
 namespace ContosoUniversity.ViewModels
@@ -7,6 +8,7 @@ namespace ContosoUniversity.ViewModels
     public class StudentVM
     {
         public int ID { get; set; }
+        //[Required]
         public string LastName { get; set; }
         public string FirstMidName { get; set; }
         public DateTime EnrollmentDate { get; set; }
